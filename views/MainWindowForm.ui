@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>864</width>
+    <height>784</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>CAIA</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QSplitter" name="splitter">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>10</y>
+      <width>781</width>
+      <height>761</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="styleSheet">
+      <string notr="true">font: 87 26pt &quot;Segoe UI Black&quot;;</string>
+     </property>
+     <property name="text">
+      <string>CAIA</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QWidget" name="gridLayoutWidget">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="7" column="1">
+       <widget class="QRadioButton" name="form8">
+        <property name="text">
+         <string>RadioButton</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QRadioButton" name="form2">
+        <property name="text">
+         <string>Evidentierea ponderii vanzarilor pe fiecare produs in parte, in total vanzari</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QRadioButton" name="form3">
+        <property name="text">
+         <string>Estimarea impactului pe care l-ar avea asupra vanzarilor scoaterea de la vanzare a unui produs sau a unei clase de produse</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QRadioButton" name="form1">
+        <property name="text">
+         <string>Evidentierea profitabilitatii unui produs in functie de profilul clientilor, perioada de timp si zona de distributie</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QRadioButton" name="form4">
+        <property name="text">
+         <string>Determinarea asocierilor realizate intre produse (de ex., cei care cumpara produsul A cumpara de regula si produsul C)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QRadioButton" name="form6">
+        <property name="text">
+         <string>Evidenta celui mai prost cumparat produs dintr-o subcategorie comparativ cu categoria sa si cu totalul de categorii</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QRadioButton" name="form5">
+        <property name="text">
+         <string>Evidenta dintre categoria de produs vanduta (per cantitate) si regiunea de unde vine clientul</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QRadioButton" name="form7">
+        <property name="text">
+         <string>Evidenta profitului si a pierderilor pe ani in functie de categoria produsului</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QPushButton" name="lanseazaFormButton">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>80</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Lanseaza Form</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
