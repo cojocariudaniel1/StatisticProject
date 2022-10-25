@@ -1,6 +1,7 @@
 from PyQt5 import QtCore, QtWidgets
 
 from model.Form2 import Form2
+from model.Form3 import Form3
 from views.MainWindowForm import Ui_MainWindow
 from model.Form1 import Form1
 
@@ -25,4 +26,8 @@ class MainWindow(QtWidgets.QMainWindow):
         elif self.ui.form2.isChecked() == True:
             MainWindow.hide(self)
             self.new_window = Form2()
+            self.new_window.show()
+        elif self.ui.form3.isChecked() == True:
+            MainWindow.hide(self)
+            self.new_window = Form3()
             self.new_window.show()
