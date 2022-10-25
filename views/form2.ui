@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1026</width>
+    <height>845</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="title">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>1011</width>
+      <height>125</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 87 26pt &quot;Segoe UI Black&quot;;</string>
+    </property>
+    <property name="text">
+     <string>CAIA</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>280</y>
+      <width>941</width>
+      <height>551</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="chart_layout"/>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>150</y>
+      <width>793</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="parameters_grid">
+     <item row="1" column="2">
+      <widget class="QRadioButton" name="frecventaCategoriilorRB">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Frecventa categoriilor</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QRadioButton" name="totalulProfVanzPeSubCategorieRB">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Totalul profitului si a vanzarilor pe sub categorie</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QRadioButton" name="distributiasubCategoriilorRB">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Distributia sub categoriilor</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QPushButton" name="genereazaGraphButton">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Genereaza Graph</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
