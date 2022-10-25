@@ -67,8 +67,8 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "CAIA"))
         self.label.setText(_translate("MainWindow", "CAIA"))
-        self.form8.setText(_translate("MainWindow", "RadioButton"))
-        self.form2.setText(_translate("MainWindow", "Evidentierea ponderii vanzarilor pe fiecare produs in parte, in total vanzari"))
+        self.form8.setText(_translate("MainWindow", "Evidentierea ponderii vanzarilor pe fiecare produs in parte, in total vanzari"))
+        self.form2.setText(_translate("MainWindow", "Totalul profitului si a vanzarilor pe sub categorii, distributia sub categoriilor in functie de categorie, frecventa categoriilor."))
         self.form3.setText(_translate("MainWindow", "Estimarea impactului pe care l-ar avea asupra vanzarilor scoaterea de la vanzare a unui produs sau a unei clase de produse"))
         self.form1.setText(_translate("MainWindow", "Evidentierea profitabilitatii unui produs in functie de profilul clientilor, perioada de timp si zona de distributie"))
         self.form4.setText(_translate("MainWindow", "Determinarea asocierilor realizate intre produse (de ex., cei care cumpara produsul A cumpara de regula si produsul C)"))

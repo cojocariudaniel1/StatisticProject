@@ -18,6 +18,32 @@ def get_products():
     return all_products
 
 
+def perioada_de_timp(product_name):
+    dataframe = get_data()
+
+    try:
+
+        df = dataframe[["Order Date", "Product Name", "Profit"]]
+        df2 = df[df["Product Name"] == product_name].sort_values(by="Order Date")
+
+        order_date = df2["Order Date"].tolist()
+        profit = df2["Profit"]
+        obj = [order_date, profit]
+        return obj
+
+    except Exception as e:
+        print(e)
+
+def zona_de_distributie(product_name):
+    dataframe = get_data()
+    df = dataframe[["State", "Profit", "Product Name"]]
+    df2 = df[df["Product Name"] == product_name].sort_values(by="State")
+    region = df2["State"].tolist()
+    profit = df2["Profit"].tolist()
+    obj = [region, profit]
+    return obj
+
+
 def profilul_clientilor(product_name):
     print(product_name)
     dataframe = get_data()
@@ -29,7 +55,6 @@ def profilul_clientilor(product_name):
     profit = df2["Profit"].tolist()
     print(df2)
 
-
     # obj.groupby(by="Segment").plot(kind="line")
-    op = [segment, profit]
-    return op
+    obj = [segment, profit]
+    return obj

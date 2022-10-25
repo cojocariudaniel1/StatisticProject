@@ -1,4 +1,6 @@
 from PyQt5 import QtCore, QtWidgets
+
+from model.Form2 import Form2
 from views.MainWindowForm import Ui_MainWindow
 from model.Form1 import Form1
 
@@ -20,5 +22,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.new_window.show()
             except Exception as e:
                 print(e)
-        else:
-            pass
+        elif self.ui.form2.isChecked() == True:
+            MainWindow.hide(self)
+            self.new_window = Form2()
+            self.new_window.show()

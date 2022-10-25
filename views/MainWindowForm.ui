@@ -42,14 +42,14 @@
       <item row="7" column="1">
        <widget class="QRadioButton" name="form8">
         <property name="text">
-         <string>RadioButton</string>
+         <string>Evidentierea ponderii vanzarilor pe fiecare produs in parte, in total vanzari</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1">
        <widget class="QRadioButton" name="form2">
         <property name="text">
-         <string>Evidentierea ponderii vanzarilor pe fiecare produs in parte, in total vanzari</string>
+         <string>Totalul profitului si a vanzarilor pe sub categorii, distributia sub categoriilor in functie de categorie, frecventa categoriilor.</string>
         </property>
        </widget>
       </item>
