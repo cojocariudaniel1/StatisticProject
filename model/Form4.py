@@ -53,7 +53,6 @@ class Form4(QtWidgets.QMainWindow):
         self.sc.axes.plot(discount,sales)
         self.sc.axes.plot(discount,profit)
         self.sc.axes.plot(discount,discount)
-        self.sc.axes.legend()
         self.sc.axes.set_ylabel("Sales")
         self.sc.axes.set_xlabel("Discount")
         self.sc.axes.legend(["Sales","Profit", "Discount"])

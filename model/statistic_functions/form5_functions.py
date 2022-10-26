@@ -2,12 +2,6 @@ import pandas as pd
 from matplotlib import pyplot as plt
 from matplotlib.pyplot import plot
 
-x1 = "Newell 322"
-x2 = "Riverside Palais Royal Lawyers Bookcase, Royale Cherry Finish"
-x3 = "Aastra 57i VoIP phone"
-x4 = "AT&T CL83451 4-Handset Telephone"
-
-
 def get_data():
     file_name = "Superbaza.xls"  # path to file + file name
     sheet = "superstore"  # sheet name or sheet number or list of sheet numbers and names
@@ -25,6 +19,7 @@ def get_subcategory():
     return df["Sub-Category"].drop_duplicates().tolist()
 
 
+#Evidenta celui mai prost produs cumparat
 def evcmppc(subcategory):
     df = get_data()
     dataframe = df[["Product ID", "Sales", "Category", "Sub-Category"]]
@@ -39,6 +34,4 @@ def evcmppc(subcategory):
 
     index = result.index
     obj = [index, values]
-    print(len(obj[0]))
     return obj
-evcmppc("Bookcases")

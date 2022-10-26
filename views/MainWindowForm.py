@@ -91,9 +91,9 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "CAIA"))
         self.label.setText(_translate("MainWindow", "CAIA"))
-        self.form5.setText(_translate("MainWindow", "Evidenta dintre categoria de produs vanduta (per cantitate) si regiunea de unde vine clientul"))
-        self.form6.setText(_translate("MainWindow", "Evidenta celui mai prost cumparat produs dintr-o subcategorie comparativ cu categoria sa si cu totalul de categorii"))
-        self.form4.setText(_translate("MainWindow", "Determinarea asocierilor realizate intre produse (de ex., cei care cumpara produsul A cumpara de regula si produsul C)"))
+        self.form5.setText(_translate("MainWindow", "Evidenta celui mai prost cumparat produs dintr-o subcategorie comparativ cu celelalte produe din subcategorie"))
+        self.form6.setText(_translate("MainWindow", "Top produse care genereaza cele mai mari profituri dintr-o subcategorie"))
+        self.form4.setText(_translate("MainWindow", "Corelația dintre evoluția discountului vânzărilor și a profitului"))
         self.form3.setText(_translate("MainWindow", "Estimarea impactului pe care l-ar avea asupra vanzarilor scoaterea de la vanzare a unui produs sau a unei clase de produse"))
         self.form1.setText(_translate("MainWindow", "Evidentierea profitabilitatii unui produs in functie de profilul clientilor, perioada de timp si zona de distributie"))
         self.form2.setText(_translate("MainWindow", "Totalul profitului si a vanzarilor pe sub categorii, distributia sub categoriilor in functie de categorie, frecventa categoriilor."))

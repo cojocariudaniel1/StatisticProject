@@ -7,8 +7,8 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 from PyQt5 import QtCore, QtWidgets
 
-from model.statistic_functions.form6_functions import get_subcategory, evcmppc
-from views.form6_view import Ui_MainWindow
+from model.statistic_functions.form5_functions import get_subcategory, evcmppc
+from views.form5_view import Ui_MainWindow
 from matplotlib import rcParams
 
 rcParams.update({'figure.autolayout': True})
@@ -23,7 +23,7 @@ class MplCanvas(FigureCanvas):
         self.fig.tight_layout()
 
 
-class Form6(QtWidgets.QMainWindow):
+class Form5(QtWidgets.QMainWindow):
     def __init__(self):
         QtWidgets.QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
@@ -32,6 +32,7 @@ class Form6(QtWidgets.QMainWindow):
         self.toolbar = NavigationToolbar(self.sc, self)
         self.ui.chart_layout.addWidget(self.sc)
         self.ui.chart_layout.addWidget(self.toolbar)
+
         self.get_subcategory()
         self.ui.genereazaGraph_Button.clicked.connect(self.generate_graph)
 
@@ -41,14 +42,11 @@ class Form6(QtWidgets.QMainWindow):
             self.ui.subCategory_CB.addItem(str(j))
 
     def generate_graph(self):
-        try:
-            obj = evcmppc(self.ui.subCategory_CB.currentText())
-            self.sc.axes.clear()
-            x = obj[0]
-            y = obj[1]
-            self.sc.axes.plot(x,y)
-            self.sc.axes.tick_params(axis="x", labelrotation=90)
-            self.sc.draw()
-            self.show()
-        except Exception as e:
-            print(e)
+        obj = evcmppc(self.ui.subCategory_CB.currentText())
+        self.sc.axes.clear()
+        x = obj[0]
+        y = obj[1]
+        self.sc.axes.plot(x, y)
+        self.sc.axes.tick_params(axis="x", labelrotation=90)
+        self.sc.draw()
+        self.show()

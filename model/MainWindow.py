@@ -3,7 +3,7 @@ from PyQt5 import QtCore, QtWidgets
 from model.Form2 import Form2
 from model.Form3 import Form3
 from model.Form4 import Form4
-from model.Form6 import Form6
+from model.Form5 import Form5
 from views.MainWindowForm import Ui_MainWindow
 from model.Form1 import Form1
 
@@ -19,12 +19,9 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def run_form(self):
         if self.ui.form1.isChecked():
-            try:
-                MainWindow.hide(self)
-                self.new_window = Form1()
-                self.new_window.show()
-            except Exception as e:
-                print(e)
+            MainWindow.hide(self)
+            self.new_window = Form1()
+            self.new_window.show()
         elif self.ui.form2.isChecked():
             MainWindow.hide(self)
             self.new_window = Form2()
@@ -37,7 +34,7 @@ class MainWindow(QtWidgets.QMainWindow):
             MainWindow.hide(self)
             self.new_window = Form4()
             self.new_window.show()
-        elif self.ui.form6.isChecked():
+        elif self.ui.form5.isChecked():
             MainWindow.hide(self)
-            self.new_window = Form6()
+            self.new_window = Form5()
             self.new_window.show()

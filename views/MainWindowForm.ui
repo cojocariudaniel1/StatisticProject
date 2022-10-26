@@ -42,21 +42,21 @@
       <item row="4" column="1">
        <widget class="QRadioButton" name="form5">
         <property name="text">
-         <string>Evidenta dintre categoria de produs vanduta (per cantitate) si regiunea de unde vine clientul</string>
+         <string>Evidenta celui mai prost cumparat produs dintr-o subcategorie comparativ cu celelalte produe din subcategorie</string>
         </property>
        </widget>
       </item>
       <item row="5" column="1">
        <widget class="QRadioButton" name="form6">
         <property name="text">
-         <string>Evidenta celui mai prost cumparat produs dintr-o subcategorie comparativ cu categoria </string>
+         <string>Top produse care genereaza cele mai mari profituri dintr-o subcategorie</string>
         </property>
        </widget>
       </item>
       <item row="3" column="1">
        <widget class="QRadioButton" name="form4">
         <property name="text">
-         <string>Determinarea asocierilor realizate intre produse (de ex., cei care cumpara produsul A cumpara de regula si produsul C)</string>
+         <string>Corelația dintre evoluția discountului vânzărilor și a profitului</string>
         </property>
        </widget>
       </item>

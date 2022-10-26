@@ -42,8 +42,13 @@ def new_sales(product_name):
 
 def scoatere_categorie(categorie_var):
     df = get_data()
+
+    # Selectare coloane Category Sales Order Date
     category_df = df[["Category", "Sales", "Order Date"]]
+
+    # Se scoate o categorie din lista de categorii
     uq_category = category_df[category_df["Category"] != str(categorie_var)]
+    #dt.year ->
     df2 = uq_category.groupby(uq_category["Order Date"].dt.year).agg(['sum', 'max'])
     total_sum = uq_category["Sales"].sum()
     date = df2.index

@@ -11,7 +11,6 @@ from model.statistic_functions.form1_functions import get_products, perioada_de_
 from model.statistic_functions.form2_functions import frecventa_categoriilor, distributia_sub_categoiilor, \
     total_sales_by_subCategory
 from views.form2_view import Ui_MainWindow
-from data import test2 as obj
 from model.statistic_functions.form1_functions import profilul_clientilor
 from matplotlib import rcParams
 
@@ -19,6 +18,7 @@ rcParams.update({'figure.autolayout': True})
 matplotlib.use('Qt5Agg')
 
 
+# Figura(grafic) efectiva care o sa apara in interfta
 class MplCanvas(FigureCanvas):
     def __init__(self, parent=None, width=5, height=4, dpi=300):
         self.fig = Figure(figsize=(width, height), dpi=dpi)
@@ -51,7 +51,7 @@ class Form2(QtWidgets.QMainWindow):
                 print(index)
                 print(sub_category)
                 for i in sub_category:
-                    self.sc.axes.bar(index,df[f"{i}"])
+                    self.sc.axes.bar(index, df[f"{i}"])
 
                 self.sc.draw()
                 self.sc.show()
@@ -62,29 +62,27 @@ class Form2(QtWidgets.QMainWindow):
             self.sc.axes.clear()
             obj = frecventa_categoriilor()
             y, x1, x2, x3 = obj[0], obj[1], obj[2], obj[3]
-            try:
-                self.sc.axes.barh(y, x1)
-                self.sc.axes.barh(y, x2)
-                self.sc.axes.barh(y, x3)
-                # self.sc.axes.tick_params(axis="x", labelrotation=90)
-                self.sc.axes.legend(["Furniture", "Office Supplies", "Technology"])
-                self.sc.draw()
-                self.sc.show()
-            except Exception as e:
-                print(e)
+            # x1,x2,x3 -> Cele trei tipuri de categorii
+            self.sc.axes.barh(y, x1)
+            self.sc.axes.barh(y, x2)
+            self.sc.axes.barh(y, x3)
+            self.sc.axes.legend(["Furniture", "Office Supplies", "Technology"])
+            self.sc.draw()
+            self.sc.show()
 
         elif self.ui.totalulProfVanzPeSubCategorieRB.isChecked():
             self.sc.axes.clear()
 
             obj = total_sales_by_subCategory()
+            # Index -> y
             index = obj[0]
             sales = obj[1]
             profit = obj[2]
 
-            self.sc.axes.bar(index,sales)
-            self.sc.axes.bar(index,profit)
+            self.sc.axes.bar(index, sales)
+            self.sc.axes.bar(index, profit)
             self.sc.axes.legend(["Sales", "Profit"])
+            #Se roteste text-ul de pe axa x cu 90 de grade
             self.sc.axes.tick_params(axis="x", labelrotation=90)
             self.sc.draw()
             self.sc.show()
-

@@ -24,25 +24,23 @@ def total_sales_by_subCategory():
     # plt.barh(index,sales)
     # plt.barh(index,profit)
     # plt.show()
-    obj = [index,sales,profit]
+    obj = [index, sales, profit]
     return obj
-
-
 
 
 def distributia_sub_categoiilor():
     dataframe = get_data()
+    # Se selecteaza coloanele Category, Sub-Category, Sales
     df = dataframe[["Category", "Sub-Category", "Sales"]]
 
-    sub_category_list = df.drop_duplicates(subset="Sub-Category")["Sub-Category"]
-    df_gp = df.groupby(["Category", "Sub-Category"]).size().unstack(fill_value=0)
-    print(df_gp)
-    index = df_gp.index
+    x = df.drop_duplicates(subset="Sub-Category")["Sub-Category"]
 
-    # # x = df_gp["Accessories"]
-    # for item in x:
-    #     plt.bar(y,df_gp[f"{item}"])
-    obj = [index, sub_category_list, df_gp]
+    # Se grupeaza datele in functie de category si sub-category
+    # .size() -> count
+    z = df.groupby(["Category", "Sub-Category"]).size().unstack(fill_value=0)
+
+    y = z.index
+    obj = [y, x, z]
     return obj
 
 
@@ -57,13 +55,5 @@ def frecventa_categoriilor():
     x1 = df_gp["Office Supplies"]
     x2 = df_gp["Technology"]
 
-    # plt.bar(y,x, )
-    # plt.bar(y,x1)
-    # plt.bar(y,x2)
-    # plt.xticks(rotation=90)
-    # plt.legend(["Furniture", "Office Supplies", "Technology"])
-    # plt.tight_layout()
-
-    # plt.show()
     obj = [y, x, x1, x2]
     return obj

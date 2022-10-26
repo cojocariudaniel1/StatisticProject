@@ -59,11 +59,13 @@ class Form3(QtWidgets.QMainWindow):
         sum = obj[1]
         max= obj[2]
         total_sum = obj[3]
+        #Calculare profit/pierdere
         if int(self.ui.sales.text()) > total_sum:
             self.ui.profit_sau_pierdere.setText(f"Pierdere: {str(int(self.ui.sales.text()) - total_sum)}")
         else:
             self.ui.profit_sau_pierdere.setText(f"Profit: {str(total_sum - int(self.ui.sales.text()))}")
 
+        #Seteaza suma totala
         self.ui.sales_label_clpr.setText(f"Sales: {total_sum}")
         self.sc.axes.bar(date,sum)
         self.sc.axes.bar(date,max)
