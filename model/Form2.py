@@ -1,13 +1,18 @@
-import matplotlib
+import random
 
+import matplotlib
+from matplotlib import pyplot as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas, \
     NavigationToolbar2QT as NavigationToolbar
 from matplotlib.figure import Figure
-from PyQt5 import QtWidgets
+from PyQt5 import QtCore, QtWidgets
 
+from model.statistic_functions.form1_functions import get_products, perioada_de_timp, zona_de_distributie
 from model.statistic_functions.form2_functions import frecventa_categoriilor, distributia_sub_categoiilor, \
     total_sales_by_subCategory
 from views.form2_view import Ui_MainWindow
+from data import test2 as obj
+from model.statistic_functions.form1_functions import profilul_clientilor
 from matplotlib import rcParams
 
 rcParams.update({'figure.autolayout': True})
@@ -36,6 +41,8 @@ class Form2(QtWidgets.QMainWindow):
 
     def check_radio_buttons(self):
         if self.ui.distributiasubCategoriilorRB.isChecked():
+            self.sc.axes.clear()
+
             try:
                 obj = distributia_sub_categoiilor()
                 index = obj[0]
@@ -44,7 +51,7 @@ class Form2(QtWidgets.QMainWindow):
                 print(index)
                 print(sub_category)
                 for i in sub_category:
-                    self.sc.axes.bar(index, df[f"{i}"])
+                    self.sc.axes.bar(index,df[f"{i}"])
 
                 self.sc.draw()
                 self.sc.show()
@@ -52,6 +59,7 @@ class Form2(QtWidgets.QMainWindow):
                 print(e)
 
         elif self.ui.frecventaCategoriilorRB.isChecked():
+            self.sc.axes.clear()
             obj = frecventa_categoriilor()
             y, x1, x2, x3 = obj[0], obj[1], obj[2], obj[3]
             try:
@@ -66,14 +74,17 @@ class Form2(QtWidgets.QMainWindow):
                 print(e)
 
         elif self.ui.totalulProfVanzPeSubCategorieRB.isChecked():
+            self.sc.axes.clear()
+
             obj = total_sales_by_subCategory()
             index = obj[0]
             sales = obj[1]
             profit = obj[2]
 
-            self.sc.axes.bar(index, sales)
-            self.sc.axes.bar(index, profit)
+            self.sc.axes.bar(index,sales)
+            self.sc.axes.bar(index,profit)
             self.sc.axes.legend(["Sales", "Profit"])
             self.sc.axes.tick_params(axis="x", labelrotation=90)
             self.sc.draw()
             self.sc.show()
+

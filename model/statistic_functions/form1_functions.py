@@ -14,7 +14,7 @@ def get_data():
 
 def get_products():
     dataframe = get_data()
-    all_products = dataframe["Product Name"].tolist()
+    all_products = dataframe["Product Name"].drop_duplicates().tolist()
     return all_products
 
 

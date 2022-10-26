@@ -39,17 +39,24 @@
     </widget>
     <widget class="QWidget" name="gridLayoutWidget">
      <layout class="QGridLayout" name="gridLayout">
-      <item row="7" column="1">
-       <widget class="QRadioButton" name="form8">
+      <item row="4" column="1">
+       <widget class="QRadioButton" name="form5">
         <property name="text">
-         <string>Evidentierea ponderii vanzarilor pe fiecare produs in parte, in total vanzari</string>
+         <string>Evidenta dintre categoria de produs vanduta (per cantitate) si regiunea de unde vine clientul</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
-       <widget class="QRadioButton" name="form2">
+      <item row="5" column="1">
+       <widget class="QRadioButton" name="form6">
         <property name="text">
-         <string>Totalul profitului si a vanzarilor pe sub categorii, distributia sub categoriilor in functie de categorie, frecventa categoriilor.</string>
+         <string>Evidenta celui mai prost cumparat produs dintr-o subcategorie comparativ cu categoria </string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QRadioButton" name="form4">
+        <property name="text">
+         <string>Determinarea asocierilor realizate intre produse (de ex., cei care cumpara produsul A cumpara de regula si produsul C)</string>
         </property>
        </widget>
       </item>
@@ -67,31 +74,17 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
-       <widget class="QRadioButton" name="form4">
+      <item row="1" column="1">
+       <widget class="QRadioButton" name="form2">
         <property name="text">
-         <string>Determinarea asocierilor realizate intre produse (de ex., cei care cumpara produsul A cumpara de regula si produsul C)</string>
+         <string>Totalul profitului si a vanzarilor pe sub categorii, distributia sub categoriilor in functie de categorie, frecventa categoriilor.</string>
         </property>
        </widget>
       </item>
-      <item row="5" column="1">
-       <widget class="QRadioButton" name="form6">
+      <item row="7" column="1">
+       <widget class="QRadioButton" name="form8">
         <property name="text">
-         <string>Evidenta celui mai prost cumparat produs dintr-o subcategorie comparativ cu categoria sa si cu totalul de categorii</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QRadioButton" name="form5">
-        <property name="text">
-         <string>Evidenta dintre categoria de produs vanduta (per cantitate) si regiunea de unde vine clientul</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="1">
-       <widget class="QRadioButton" name="form7">
-        <property name="text">
-         <string>Evidenta profitului si a pierderilor pe ani in functie de categoria produsului</string>
+         <string>Evidentierea ponderii vanzarilor pe fiecare produs in parte, in total vanzari</string>
         </property>
        </widget>
       </item>
@@ -105,6 +98,69 @@
         </property>
         <property name="text">
          <string>Lanseaza Form</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QRadioButton" name="form7">
+        <property name="text">
+         <string>Evidenta profitului si a pierderilor pe ani in functie de categoria produsului</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>1)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>2)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>3)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>4)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>5)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>6)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>7)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>8)</string>
         </property>
        </widget>
       </item>
