@@ -66,7 +66,7 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>140</x>
@@ -191,6 +191,22 @@
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QPushButton" name="export_button">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>10</y>
+      <width>296</width>
+      <height>33</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Export</string>
+    </property>
    </widget>
   </widget>
  </widget>

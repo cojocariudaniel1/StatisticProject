@@ -5,9 +5,8 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
     NavigationToolbar2QT as NavigationToolbar
 from matplotlib.figure import Figure
 
+from model.Export import Export
 from model.statistic_functions.form3_functions import get_category
-from model.statistic_functions.form5_functions import get_subcategory
-from model.statistic_functions.form6_functions import top_5_produse_pe_subcategorie
 from model.statistic_functions.form7_functions import profit_pe_an
 from views.form7_view import Ui_MainWindow
 
@@ -34,6 +33,7 @@ class Form7(QtWidgets.QMainWindow):
         self.ui.chart_layout.addWidget(self.toolbar)
         self.ui.genereazaGraph_Button.clicked.connect(self.generate_graph)
         self.populate_combobox()
+        self.ui.export_button.clicked.connect(self.export)
 
     def populate_combobox(self):
         product_category = get_category()
@@ -49,3 +49,7 @@ class Form7(QtWidgets.QMainWindow):
         # self.sc.axes.tick_params(axis="x", labelrotation=90)
         self.sc.draw()
         self.show()
+
+    def export(self):
+        self.new_window = Export("Form7", self.ui.categorieProdusCB.currentText())
+        self.new_window.show()

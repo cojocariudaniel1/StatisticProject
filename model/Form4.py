@@ -1,16 +1,14 @@
-import random
-
 import matplotlib
-from matplotlib import pyplot as plt
+from PyQt5 import QtWidgets
+from matplotlib import rcParams
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas, \
     NavigationToolbar2QT as NavigationToolbar
 from matplotlib.figure import Figure
-from PyQt5 import QtCore, QtWidgets
 
-from model.statistic_functions.form4_functions import get_products
+from model.Export import Export
 from model.statistic_functions.form4_functions import evolutia_dis_vanz
+from model.statistic_functions.form4_functions import get_products
 from views.form4_view import Ui_MainWindow
-from matplotlib import rcParams
 
 rcParams.update({'figure.autolayout': True})
 matplotlib.use('Qt5Agg')
@@ -35,10 +33,9 @@ class Form4(QtWidgets.QMainWindow):
         self.ui.chart_layout.addWidget(self.toolbar)
         self.ui.genereazaGraph_Button.clicked.connect(self.genereaza_graph)
         self.populate_combobox()
-
+        self.ui.export_button.clicked.connect(self.export)
 
     def populate_combobox(self):
-
         prducts = get_products()
         for j in prducts:
             self.ui.productComboBox.addItem(str(j))
@@ -50,13 +47,15 @@ class Form4(QtWidgets.QMainWindow):
         sales = obj[1]
         profit = obj[2]
 
-        self.sc.axes.plot(discount,sales)
-        self.sc.axes.plot(discount,profit)
-        self.sc.axes.plot(discount,discount)
+        self.sc.axes.plot(discount, sales)
+        self.sc.axes.plot(discount, profit)
+        self.sc.axes.plot(discount, discount)
         self.sc.axes.set_ylabel("Sales")
         self.sc.axes.set_xlabel("Discount")
-        self.sc.axes.legend(["Sales","Profit", "Discount"])
+        self.sc.axes.legend(["Sales", "Profit", "Discount"])
         self.sc.draw()
         self.sc.show()
 
-
+    def export(self):
+        self.new_window = Export("Form4", self.ui.productComboBox.currentText())
+        self.new_window.show()

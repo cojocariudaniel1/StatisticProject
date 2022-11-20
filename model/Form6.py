@@ -5,6 +5,7 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
     NavigationToolbar2QT as NavigationToolbar
 from matplotlib.figure import Figure
 
+from model.Export import Export
 from model.statistic_functions.form5_functions import get_subcategory
 from model.statistic_functions.form6_functions import top_5_produse_pe_subcategorie
 from views.form6_view import Ui_MainWindow
@@ -32,6 +33,7 @@ class Form6(QtWidgets.QMainWindow):
         self.ui.chart_layout.addWidget(self.toolbar)
         self.ui.genereazaGraph_Button.clicked.connect(self.generate_graph)
         self.get_subcategory()
+        self.ui.export_button.clicked.connect(self.export)
 
     def get_subcategory(self):
         subcategory = get_subcategory()
@@ -47,3 +49,7 @@ class Form6(QtWidgets.QMainWindow):
         self.sc.axes.tick_params(axis="x", labelrotation=90)
         self.sc.draw()
         self.show()
+
+    def export(self):
+        self.new_window = Export("Form6", self.ui.subCategory_CB.currentText())
+        self.new_window.show()

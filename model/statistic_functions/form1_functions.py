@@ -1,3 +1,5 @@
+import os
+
 import numpy as np
 import pandas as pd
 import statsmodels.api as sm
@@ -6,6 +8,7 @@ import xlsxwriter
 
 
 # Construct the columns for the different powers of x
+from model.statistic_functions.form4_functions import chart_trendline
 
 
 def get_r2_statsmodels(x, y, k=1):
@@ -20,7 +23,7 @@ def get_r2_statsmodels_formula(x, y, k=1):
     return smf.ols(formula, data).fit().rsquared  # or rsquared_adj
 
 
-def export_to_excel(obj, patch='data.xlsx'):
+def export_to_excel(obj, patch='data.xlsx', trend_line_attrs=None):
     try:
         date = []
         for i in obj[0]:
@@ -30,7 +33,7 @@ def export_to_excel(obj, patch='data.xlsx'):
         profit = obj[1].tolist()
         header = ["Order Date", "Profit"]
 
-        workbook = xlsxwriter.Workbook('chart_line.xlsx')
+        workbook = xlsxwriter.Workbook(patch[0])
         worksheet = workbook.add_worksheet()
 
         # Add the worksheet data to be plotted.
@@ -47,25 +50,15 @@ def export_to_excel(obj, patch='data.xlsx'):
             'values': f'=Sheet1!$B$2:$B${data_len}',
             'categories': f'=Sheet1!$A$2:$A${data_len}',
             'name': 'Profit/Time',
-            'trendline': {
-                'type': 'polynomial',
-                'name': 'Profit TrendLine',
-                'order': 1,
-                'forward': 0.1,
-                'backward': 0.2,
-                'display_r_squared': True,
-                'display_equation': True,
-                'line': {
-                    'color': 'red',
-                    'width': 1,
-                },
-            },
+            'trendline': chart_trendline(trend_line_attrs)
         })
         # Insert the chart into the worksheet.
         worksheet.insert_chart('D2', chart)
 
         worksheet.conditional_format(f'B2:B{data_len}', {'type': '3_color_scale'})
         workbook.close()
+        full_path_to_file = str(patch[0])
+        os.startfile(full_path_to_file)
     except BaseException as e:
         print(e)
 

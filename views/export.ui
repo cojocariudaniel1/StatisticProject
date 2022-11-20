@@ -92,110 +92,11 @@
       <x>50</x>
       <y>160</y>
       <width>319</width>
-      <height>409</height>
+      <height>410</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="4" column="2">
-      <widget class="QDoubleSpinBox" name="backward_spin">
-       <property name="styleSheet">
-        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
-       </property>
-       <property name="decimals">
-        <number>1</number>
-       </property>
-       <property name="minimum">
-        <double>0.100000000000000</double>
-       </property>
-       <property name="maximum">
-        <double>1.000000000000000</double>
-       </property>
-       <property name="singleStep">
-        <double>0.100000000000000</double>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="0" colspan="3">
-      <widget class="QLabel" name="label_8">
-       <property name="toolTip">
-        <string>The display_r_squared property displays the R squared value of the trendline on the chart</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
-       </property>
-       <property name="text">
-        <string>Display R squared: </string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="0" colspan="3">
-      <widget class="QLabel" name="label_9">
-       <property name="toolTip">
-        <string>The display_equation property displays the trendline equation on the chart</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
-       </property>
-       <property name="text">
-        <string>Display equation: </string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="2" colspan="2">
-      <widget class="QLineEdit" name="lineEdit">
-       <property name="styleSheet">
-        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_4">
-       <property name="styleSheet">
-        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
-       </property>
-       <property name="text">
-        <string>Name:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_5">
-       <property name="styleSheet">
-        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
-       </property>
-       <property name="text">
-        <string>Order:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="3">
-      <widget class="QCheckBox" name="display_equation_checkBox">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="0" colspan="2">
-      <widget class="QLabel" name="label_7">
-       <property name="styleSheet">
-        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
-       </property>
-       <property name="text">
-        <string>Backward:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="9" column="0">
-      <widget class="QLabel" name="label_11">
-       <property name="styleSheet">
-        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
-       </property>
-       <property name="text">
-        <string>Color:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0" colspan="2">
+     <item row="5" column="0" colspan="2">
       <widget class="QLabel" name="label_6">
        <property name="toolTip">
         <string>The forward and backward properties set the forecast period of the trendline</string>
@@ -208,7 +109,7 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="2">
+     <item row="5" column="2">
       <widget class="QDoubleSpinBox" name="forward_spin">
        <property name="styleSheet">
         <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
@@ -227,7 +128,17 @@
        </property>
       </widget>
      </item>
-     <item row="10" column="0">
+     <item row="11" column="0">
+      <widget class="QLabel" name="label_11">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Color:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="0">
       <widget class="QLabel" name="label_12">
        <property name="styleSheet">
         <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
@@ -238,7 +149,7 @@
       </widget>
      </item>
      <item row="1" column="2">
-      <widget class="QSpinBox" name="spinBox">
+      <widget class="QSpinBox" name="order_spin">
        <property name="styleSheet">
         <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
        </property>
@@ -250,15 +161,8 @@
        </property>
       </widget>
      </item>
-     <item row="5" column="3">
-      <widget class="QCheckBox" name="rsquared_checkBox">
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item row="10" column="1" colspan="2">
-      <widget class="QDoubleSpinBox" name="line_width_spin">
+     <item row="12" column="1" colspan="2">
+      <widget class="QDoubleSpinBox" name="line_width_spin_trendline">
        <property name="styleSheet">
         <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
        </property>
@@ -279,6 +183,13 @@
        </property>
       </widget>
      </item>
+     <item row="7" column="3">
+      <widget class="QCheckBox" name="rsquared_checkBox">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
      <item row="0" column="0">
       <widget class="QLabel" name="label_3">
        <property name="styleSheet">
@@ -290,7 +201,7 @@
       </widget>
      </item>
      <item row="0" column="1" colspan="3">
-      <widget class="QComboBox" name="productComboBox">
+      <widget class="QComboBox" name="polynomial_comboBox">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -313,7 +224,7 @@
         <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
        </property>
        <property name="currentText">
-        <string notr="true">polinomial</string>
+        <string notr="true">polynomial</string>
        </property>
        <property name="maxVisibleItems">
         <number>10000</number>
@@ -329,13 +240,38 @@
        </property>
        <item>
         <property name="text">
-         <string>polinomial</string>
+         <string>polynomial</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>log</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>linear</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>exponential</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>moving_average</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>power</string>
         </property>
        </item>
       </widget>
      </item>
-     <item row="9" column="1" colspan="2">
-      <widget class="QComboBox" name="productComboBox_2">
+     <item row="11" column="1" colspan="2">
+      <widget class="QComboBox" name="color_checkbox_trendline">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -377,9 +313,34 @@
          <string>red</string>
         </property>
        </item>
+       <item>
+        <property name="text">
+         <string>green</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>blue</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>yellow</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>black</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>orange</string>
+        </property>
+       </item>
       </widget>
      </item>
-     <item row="7" column="1">
+     <item row="9" column="1">
       <widget class="QLabel" name="label_10">
        <property name="styleSheet">
         <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
@@ -389,7 +350,161 @@
        </property>
       </widget>
      </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Order:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="3">
+      <widget class="QCheckBox" name="display_equation_checkBox">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0" colspan="2">
+      <widget class="QLabel" name="label_7">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Backward:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="QSpinBox" name="period_spin">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>5</number>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="2">
+      <widget class="QDoubleSpinBox" name="backward_spin">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="minimum">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>1.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0" colspan="3">
+      <widget class="QLabel" name="label_9">
+       <property name="toolTip">
+        <string>The display_equation property displays the trendline equation on the chart</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Display equation: </string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Name:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0" colspan="3">
+      <widget class="QLabel" name="label_8">
+       <property name="toolTip">
+        <string>The display_r_squared property displays the R squared value of the trendline on the chart</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Display R squared: </string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="2" colspan="2">
+      <widget class="QLineEdit" name="name_trendline">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_13">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Period:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_14">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Intercept:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="2">
+      <widget class="QDoubleSpinBox" name="intercept_spin">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="minimum">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>1.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+      </widget>
+     </item>
     </layout>
+   </widget>
+   <widget class="QCheckBox" name="trendline_check">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>130</y>
+      <width>70</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
    </widget>
   </widget>
  </widget>

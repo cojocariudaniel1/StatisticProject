@@ -1,4 +1,10 @@
+import logging
+import os
+
 import pandas as pd
+import xlsxwriter
+
+from model.statistic_functions.form4_functions import chart_trendline
 
 
 def get_data():
@@ -11,6 +17,39 @@ def get_data():
 
     # Evidenta celui mai prost cumparat produs dintr-o subcategorie comparativ cu categoria sa si cu totalul de categorii
     # Evidenta celui mai prost produs cumparat
+
+
+def export_to_excel(obj, patch='data.xlsx', trend_line_attrs=None):
+    try:
+        product = obj[0]
+        sales = obj[1]
+        header = ["Products", "Sales"]
+
+        workbook = xlsxwriter.Workbook(patch[0])
+
+        worksheet = workbook.add_worksheet()
+        worksheet.write_row('A1', header)
+        worksheet.write_column('A2', product)
+        worksheet.write_column('B2', sales)
+
+        chart = workbook.add_chart({'type': 'line'})
+        data_len = len(product) + 1
+
+        if trend_line_attrs:
+            chart.add_series({
+                'values': f'=Sheet1!$B$2:$B${data_len}',
+                'categories': f'=Sheet1!$A$2:$A${data_len}',
+                'name': 'Chart',
+                'trendline': chart_trendline(trend_line_attrs)
+            })
+
+        worksheet.insert_chart('E2', chart)
+        worksheet.conditional_format(f'B2:B{data_len}', {'type': '3_color_scale'})
+        workbook.close()
+        full_path_to_file = str(patch[0])
+        os.startfile(full_path_to_file)
+    except BaseException as e:
+        logging.exception(e)
 
 
 def get_subcategory():

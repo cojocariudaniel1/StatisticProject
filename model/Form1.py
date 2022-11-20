@@ -8,6 +8,7 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
     NavigationToolbar2QT as NavigationToolbar
 from matplotlib.figure import Figure
 
+from model.Export import Export
 from model.statistic_functions.form1_functions import get_products, perioada_de_timp, zona_de_distributie, \
     export_to_excel
 
@@ -52,9 +53,8 @@ class Form1(QtWidgets.QMainWindow):
         self.ui.export_button.clicked.connect(self.export)
 
     def export(self):
-        folderpath = QtWidgets.QFileDialog.getSaveFileName(self, 'Select Folder')
-        obj = perioada_de_timp(self.ui.productComboBox.currentText())
-        export_to_excel(obj, folderpath)
+        self.new_window = Export("Form1", self.ui.productComboBox.currentText())
+        self.new_window.show()
 
     def reset_date(self):
         try:
