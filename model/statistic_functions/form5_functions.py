@@ -1,6 +1,5 @@
 import pandas as pd
-from matplotlib import pyplot as plt
-from matplotlib.pyplot import plot
+
 
 def get_data():
     file_name = "Superbaza.xls"  # path to file + file name
@@ -19,13 +18,15 @@ def get_subcategory():
     return df["Sub-Category"].drop_duplicates().tolist()
 
 
-#Evidenta celui mai prost produs cumparat
-def evcmppc(subcategory):
+# Evidenta celui mai prost produs cumparat
+def evcmppc(subcategory, nr_product):
     df = get_data()
     dataframe = df[["Product ID", "Sales", "Category", "Sub-Category"]]
     sub_category = dataframe[dataframe["Sub-Category"] == subcategory]
-    result = sub_category.groupby("Product ID").mean(numeric_only=True).\
-        sort_values(by="Sales", ascending=True).head(60)
+    if nr_product == 0:
+        return [[], []]
+    result = sub_category.groupby("Product ID").mean(numeric_only=True). \
+        sort_values(by="Sales", ascending=True).head(nr_product)
 
     values = []
 

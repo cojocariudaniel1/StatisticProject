@@ -1,13 +1,15 @@
 import matplotlib
 from PyQt5 import QtWidgets
-from PyQt5.QtCore import Qt
 from matplotlib import rcParams
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas, \
     NavigationToolbar2QT as NavigationToolbar
 from matplotlib.figure import Figure
 
-from model.statistic_functions.form5_functions import get_subcategory, evcmppc
-from views.form5_view import Ui_MainWindow
+from model.statistic_functions.form3_functions import get_category
+from model.statistic_functions.form5_functions import get_subcategory
+from model.statistic_functions.form6_functions import top_5_produse_pe_subcategorie
+from model.statistic_functions.form7_functions import profit_pe_an
+from views.form7_view import Ui_MainWindow
 
 rcParams.update({'figure.autolayout': True})
 matplotlib.use('Qt5Agg')
@@ -21,7 +23,7 @@ class MplCanvas(FigureCanvas):
         self.fig.tight_layout()
 
 
-class Form5(QtWidgets.QMainWindow):
+class Form7(QtWidgets.QMainWindow):
     def __init__(self):
         QtWidgets.QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
@@ -30,25 +32,20 @@ class Form5(QtWidgets.QMainWindow):
         self.toolbar = NavigationToolbar(self.sc, self)
         self.ui.chart_layout.addWidget(self.sc)
         self.ui.chart_layout.addWidget(self.toolbar)
-
-        self.get_subcategory()
         self.ui.genereazaGraph_Button.clicked.connect(self.generate_graph)
-        self.ui.horizontalSlider.valueChanged.connect(self.update_label)
+        self.populate_combobox()
 
-    def update_label(self, value):
-        self.ui.slider_value.setText(str(value))
-
-    def get_subcategory(self):
-        subcategory = get_subcategory()
-        for j in subcategory:
-            self.ui.subCategory_CB.addItem(str(j))
+    def populate_combobox(self):
+        product_category = get_category()
+        for k in product_category:
+            self.ui.categorieProdusCB.addItem(str(k))
 
     def generate_graph(self):
-        obj = evcmppc(self.ui.subCategory_CB.currentText(), int(self.ui.horizontalSlider.value()))
+        obj = profit_pe_an(self.ui.categorieProdusCB.currentText())
         self.sc.axes.clear()
         x = obj[0]
         y = obj[1]
         self.sc.axes.plot(x, y)
-        self.sc.axes.tick_params(axis="x", labelrotation=90)
+        # self.sc.axes.tick_params(axis="x", labelrotation=90)
         self.sc.draw()
         self.show()

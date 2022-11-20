@@ -1,13 +1,13 @@
 import matplotlib
 from PyQt5 import QtWidgets
-from PyQt5.QtCore import Qt
 from matplotlib import rcParams
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas, \
     NavigationToolbar2QT as NavigationToolbar
 from matplotlib.figure import Figure
 
-from model.statistic_functions.form5_functions import get_subcategory, evcmppc
-from views.form5_view import Ui_MainWindow
+from model.statistic_functions.form5_functions import get_subcategory
+from model.statistic_functions.form6_functions import top_5_produse_pe_subcategorie
+from views.form6_view import Ui_MainWindow
 
 rcParams.update({'figure.autolayout': True})
 matplotlib.use('Qt5Agg')
@@ -21,7 +21,7 @@ class MplCanvas(FigureCanvas):
         self.fig.tight_layout()
 
 
-class Form5(QtWidgets.QMainWindow):
+class Form6(QtWidgets.QMainWindow):
     def __init__(self):
         QtWidgets.QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
@@ -30,13 +30,8 @@ class Form5(QtWidgets.QMainWindow):
         self.toolbar = NavigationToolbar(self.sc, self)
         self.ui.chart_layout.addWidget(self.sc)
         self.ui.chart_layout.addWidget(self.toolbar)
-
-        self.get_subcategory()
         self.ui.genereazaGraph_Button.clicked.connect(self.generate_graph)
-        self.ui.horizontalSlider.valueChanged.connect(self.update_label)
-
-    def update_label(self, value):
-        self.ui.slider_value.setText(str(value))
+        self.get_subcategory()
 
     def get_subcategory(self):
         subcategory = get_subcategory()
@@ -44,7 +39,7 @@ class Form5(QtWidgets.QMainWindow):
             self.ui.subCategory_CB.addItem(str(j))
 
     def generate_graph(self):
-        obj = evcmppc(self.ui.subCategory_CB.currentText(), int(self.ui.horizontalSlider.value()))
+        obj = top_5_produse_pe_subcategorie(self.ui.subCategory_CB.currentText())
         self.sc.axes.clear()
         x = obj[0]
         y = obj[1]

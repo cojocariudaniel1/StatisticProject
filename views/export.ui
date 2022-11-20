@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>430</width>
+    <height>682</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="title">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>-281</x>
+      <y>0</y>
+      <width>1041</width>
+      <height>125</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 87 26pt &quot;Segoe UI Black&quot;;</string>
+    </property>
+    <property name="text">
+     <string>CAIA</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="export_button">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>39</x>
+      <y>590</y>
+      <width>341</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+      <horstretch>47</horstretch>
+      <verstretch>50</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>9</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Export</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>119</x>
+      <y>120</y>
+      <width>187</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Trend Line Settings</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>160</y>
+      <width>319</width>
+      <height>409</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="4" column="2">
+      <widget class="QDoubleSpinBox" name="backward_spin">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="minimum">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>1.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0" colspan="3">
+      <widget class="QLabel" name="label_8">
+       <property name="toolTip">
+        <string>The display_r_squared property displays the R squared value of the trendline on the chart</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Display R squared: </string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0" colspan="3">
+      <widget class="QLabel" name="label_9">
+       <property name="toolTip">
+        <string>The display_equation property displays the trendline equation on the chart</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Display equation: </string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2" colspan="2">
+      <widget class="QLineEdit" name="lineEdit">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Name:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Order:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="3">
+      <widget class="QCheckBox" name="display_equation_checkBox">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0" colspan="2">
+      <widget class="QLabel" name="label_7">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Backward:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="label_11">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Color:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0" colspan="2">
+      <widget class="QLabel" name="label_6">
+       <property name="toolTip">
+        <string>The forward and backward properties set the forecast period of the trendline</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Forward: </string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="2">
+      <widget class="QDoubleSpinBox" name="forward_spin">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="minimum">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>1.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="0">
+      <widget class="QLabel" name="label_12">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="text">
+        <string>width</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QSpinBox" name="spinBox">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>5</number>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="3">
+      <widget class="QCheckBox" name="rsquared_checkBox">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="1" colspan="2">
+      <widget class="QDoubleSpinBox" name="line_width_spin">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="minimum">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>20.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="value">
+        <double>1.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Type: </string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1" colspan="3">
+      <widget class="QComboBox" name="productComboBox">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="currentText">
+        <string notr="true">polinomial</string>
+       </property>
+       <property name="maxVisibleItems">
+        <number>10000</number>
+       </property>
+       <property name="insertPolicy">
+        <enum>QComboBox::InsertAlphabetically</enum>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::AdjustToContents</enum>
+       </property>
+       <property name="modelColumn">
+        <number>0</number>
+       </property>
+       <item>
+        <property name="text">
+         <string>polinomial</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="9" column="1" colspan="2">
+      <widget class="QComboBox" name="productComboBox_2">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="currentText">
+        <string notr="true">red</string>
+       </property>
+       <property name="maxVisibleItems">
+        <number>10000</number>
+       </property>
+       <property name="insertPolicy">
+        <enum>QComboBox::InsertAlphabetically</enum>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::AdjustToContents</enum>
+       </property>
+       <property name="modelColumn">
+        <number>0</number>
+       </property>
+       <item>
+        <property name="text">
+         <string>red</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QLabel" name="label_10">
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+       </property>
+       <property name="text">
+        <string>Line:</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

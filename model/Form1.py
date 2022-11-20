@@ -1,16 +1,18 @@
-import random
+from datetime import datetime
 
 import matplotlib
-from matplotlib import pyplot as plt
+import xlsxwriter
+from PyQt5 import QtWidgets
+from matplotlib import rcParams
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas, \
     NavigationToolbar2QT as NavigationToolbar
 from matplotlib.figure import Figure
-from PyQt5 import QtCore, QtWidgets
 
-from model.statistic_functions.form1_functions import get_products, perioada_de_timp, zona_de_distributie
-from views.form1_view import Ui_MainWindow
+from model.statistic_functions.form1_functions import get_products, perioada_de_timp, zona_de_distributie, \
+    export_to_excel
+
 from model.statistic_functions.form1_functions import profilul_clientilor
-from matplotlib import rcParams
+from views.form1_view import Ui_MainWindow
 
 rcParams.update({'figure.autolayout': True})
 matplotlib.use('Qt5Agg')
@@ -30,6 +32,7 @@ class Form1(QtWidgets.QMainWindow):
         QtWidgets.QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.ui.export_button.hide()
         # Se creaza graficul gol
         self.sc = MplCanvas(self, width=5, height=4, dpi=100)
         # Se adauga meniul de la grafic in partea de jos
@@ -42,19 +45,37 @@ class Form1(QtWidgets.QMainWindow):
         self.ui.genereazaChartButton.clicked.connect(self.check_button)
         self.get_product_items()
 
+        self.ui.productComboBox.activated[str].connect(self.reset_date)
+        self.ui.profilulClientilorRB.clicked.connect(self.reset_date)
+        self.ui.zonaDeDistributieRB.clicked.connect(self.reset_date)
+
+        self.ui.export_button.clicked.connect(self.export)
+
+    def export(self):
+        folderpath = QtWidgets.QFileDialog.getSaveFileName(self, 'Select Folder')
+        obj = perioada_de_timp(self.ui.productComboBox.currentText())
+        export_to_excel(obj, folderpath)
+
+    def reset_date(self):
+        try:
+            self.ui.dateEdit_max.setDateTime(datetime(2000, 1, 1))
+            self.ui.dateEdit_min.setDateTime(datetime(2000, 1, 1))
+            self.ui.dateEdit_max.setEnabled(False)
+            self.ui.dateEdit_min.setEnabled(False)
+        except Exception as e:
+            print(e)
+
     # Se primeste o lista de produse si se adauga intr-un ComboBox
     def get_product_items(self):
         items = get_products()
         for j in items:
             self.ui.productComboBox.addItem(str(j))
 
-
-
     def check_button(self):
         self.sc.axes.clear()
         if self.ui.profilulClientilorRB.isChecked():
             obj = profilul_clientilor(self.ui.productComboBox.currentText())
-            x, y = obj[0], obj[1]
+            x, y = obj[0][0], obj[0][1]
             self.sc.axes.plot()
             self.sc.axes.set_title("Profitul clientilor in functie de categorie")
             self.sc.axes.set_ylabel('Profit')
@@ -63,13 +84,31 @@ class Form1(QtWidgets.QMainWindow):
             # Se acceseaza functia generate_graph avand ca atribut x,y si tip-ul de chart
             self.generate_graph(x, y, kind="bar")
         elif self.ui.perioadaDeTimpRB.isChecked():
-            obj = perioada_de_timp(self.ui.productComboBox.currentText())
-            x, y = obj[0], obj[1]
-            self.sc.axes.plot()
-            self.sc.axes.set_title("Profitul clientilor in functie de data")
-            self.sc.axes.set_ylabel("Profit")
-            self.sc.axes.set_xlabel("Order Date")
-            self.generate_graph(x, y, kind="linear")
+            print('test')
+            date = datetime(2000, 1, 1)
+            if self.ui.dateEdit_min.dateTime().toPyDateTime() == (
+                    date) and self.ui.dateEdit_max.dateTime().toPyDateTime() == date:
+                obj = perioada_de_timp(self.ui.productComboBox.currentText())
+                self.ui.dateEdit_min.setDateTime(obj[2])
+                self.ui.dateEdit_max.setDateTime(obj[3])
+                self.ui.dateEdit_min.setEnabled(True)
+                self.ui.dateEdit_max.setEnabled(True)
+                x, y = obj[0], obj[1]
+                self.sc.axes.plot()
+                self.sc.axes.set_title("Profitul clientilor in functie de data")
+                self.sc.axes.set_ylabel("Profit")
+                self.sc.axes.set_xlabel("Order Date")
+                self.generate_graph(x, y, kind="linear")
+            else:
+                obj = perioada_de_timp(self.ui.productComboBox.currentText(),
+                                       self.ui.dateEdit_min.dateTime().toPyDateTime(),
+                                       self.ui.dateEdit_max.dateTime().toPyDateTime())
+                x, y = obj[0], obj[1]
+                self.sc.axes.plot()
+                self.sc.axes.set_title("Profitul clientilor in functie de data")
+                self.sc.axes.set_ylabel("Profit")
+                self.sc.axes.set_xlabel("Order Date")
+                self.generate_graph(x, y, kind="linear")
         elif self.ui.zonaDeDistributieRB.isChecked():
             obj = zona_de_distributie(product_name=self.ui.productComboBox.currentText())
             x, y = obj[0], obj[1]
@@ -81,6 +120,10 @@ class Form1(QtWidgets.QMainWindow):
             self.generate_graph(x, y, kind="bar")
 
     def generate_graph(self, x, y, kind):
+        if self.ui.perioadaDeTimpRB.isChecked():
+            self.ui.export_button.show()
+        else:
+            self.ui.export_button.hide()
 
         if kind == "linear":
             self.sc.axes.plot(x, y)
@@ -89,3 +132,5 @@ class Form1(QtWidgets.QMainWindow):
 
         self.sc.draw()
         self.sc.show()
+
+
