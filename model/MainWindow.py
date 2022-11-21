@@ -8,6 +8,7 @@ from model.Form5 import Form5
 from model.Form6 import Form6
 from model.Form7 import Form7
 from model.Form8 import Form8
+from model.GeoMap import GeoMap
 from views.MainWindowForm import Ui_MainWindow
 
 
@@ -44,4 +45,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.new_window.show()
         elif self.ui.form8.isChecked():
             self.new_window = Form8()
+            self.new_window.show()
+        elif self.ui.geo_map.isChecked():
+            self.new_window = GeoMap()
             self.new_window.show()

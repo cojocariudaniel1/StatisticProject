@@ -1,18 +1,13 @@
-import random
-
 import matplotlib
-from matplotlib import pyplot as plt
+from PyQt5 import QtWidgets
+from matplotlib import rcParams
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas, \
     NavigationToolbar2QT as NavigationToolbar
 from matplotlib.figure import Figure
-from PyQt5 import QtCore, QtWidgets
 
-from model.statistic_functions.form1_functions import get_products, perioada_de_timp, zona_de_distributie
 from model.statistic_functions.form2_functions import frecventa_categoriilor, distributia_sub_categoiilor, \
     total_sales_by_subCategory
 from views.form2_view import Ui_MainWindow
-from model.statistic_functions.form1_functions import profilul_clientilor
-from matplotlib import rcParams
 
 rcParams.update({'figure.autolayout': True})
 matplotlib.use('Qt5Agg')

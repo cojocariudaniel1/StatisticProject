@@ -46,6 +46,9 @@ class Form8(QtWidgets.QMainWindow):
         self.sc.axes.clear()
         x1 = obj[0]
         x2 = obj[1]
+        print(x1,x2)
+        print(type(x1))
+        print(type(x2))
         labels = obj[2]
         explode = obj[3]
         self.sc.axes.pie([x1, x2], explode=explode, labels=labels, autopct='%1.1f%%',

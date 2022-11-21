@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>864</width>
+    <width>727</width>
     <height>784</height>
    </rect>
   </property>
@@ -17,9 +17,9 @@
    <widget class="QSplitter" name="splitter">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>0</y>
-      <width>781</width>
+      <x>30</x>
+      <y>10</y>
+      <width>651</width>
       <height>761</height>
      </rect>
     </property>
@@ -60,35 +60,7 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
-       <widget class="QRadioButton" name="form3">
-        <property name="text">
-         <string>Estimarea impactului pe care l-ar avea asupra vanzarilor scoaterea de la vanzare a unui produs sau a unei clase de produse</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QRadioButton" name="form1">
-        <property name="text">
-         <string>Evidentierea profitabilitatii unui produs in functie de profilul clientilor, perioada de timp si zona de distributie</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QRadioButton" name="form2">
-        <property name="text">
-         <string>Totalul profitului si a vanzarilor pe sub categorii, distributia sub categoriilor in functie de categorie, frecventa categoriilor.</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="1">
-       <widget class="QRadioButton" name="form8">
-        <property name="text">
-         <string>Evidentierea ponderii vanzarilor pe fiecare produs in parte, in total vanzari</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="1">
+      <item row="9" column="1">
        <widget class="QPushButton" name="lanseazaFormButton">
         <property name="minimumSize">
          <size>
@@ -101,17 +73,38 @@
         </property>
        </widget>
       </item>
+      <item row="0" column="1">
+       <widget class="QRadioButton" name="form1">
+        <property name="text">
+         <string>Evidentierea profitabilitatii unui produs in functie de profilul clientilor, perioada de timp si zona de distributie</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QRadioButton" name="form3">
+        <property name="text">
+         <string>Estimarea impactului pe care l-ar avea asupra vanzarilor scoaterea de la vanzare a unui produs sau a unei clase de produse</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QRadioButton" name="form8">
+        <property name="text">
+         <string>Evidentierea ponderii vanzarilor pe fiecare produs in parte, in total vanzari</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QRadioButton" name="form2">
+        <property name="text">
+         <string>Totalul profitului si a vanzarilor pe sub categorii, distributia sub categoriilor in functie de categorie, frecventa categoriilor.</string>
+        </property>
+       </widget>
+      </item>
       <item row="6" column="1">
        <widget class="QRadioButton" name="form7">
         <property name="text">
          <string>Evidenta profitului si a pierderilor pe ani in functie de categoria produsului</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>1)</string>
         </property>
        </widget>
       </item>
@@ -129,10 +122,10 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_4">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>4)</string>
+         <string>1)</string>
         </property>
        </widget>
       </item>
@@ -143,10 +136,10 @@
         </property>
        </widget>
       </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="label_8">
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_4">
         <property name="text">
-         <string>6)</string>
+         <string>4)</string>
         </property>
        </widget>
       </item>
@@ -157,10 +150,31 @@
         </property>
        </widget>
       </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>6)</string>
+        </property>
+       </widget>
+      </item>
       <item row="7" column="0">
        <widget class="QLabel" name="label_6">
         <property name="text">
          <string>8)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QRadioButton" name="geo_map">
+        <property name="text">
+         <string>Geo Map</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>9)</string>
         </property>
        </widget>
       </item>
