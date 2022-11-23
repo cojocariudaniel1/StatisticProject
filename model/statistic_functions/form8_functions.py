@@ -38,8 +38,6 @@ def export_pondere_vanzari(sub_categorie, patch="data.xlsx"):
         })
         chart.set_style(10)
         worksheet.insert_chart('D2', chart)
-        # worksheet.conditional_format(f'B2:B{data_len}', {'type': '3_color_scale'})
-        # worksheet.conditional_format(f'C2:C{data_len}', {'type': '3_color_scale'})
 
         workbook.close()
         full_path_to_file = str(patch[0])

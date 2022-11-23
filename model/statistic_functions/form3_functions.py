@@ -76,6 +76,9 @@ def export_scoatere_categorie(func, item, patch="data.xlsx"):
         'name': '=Sheet1!$C$1'
 
     })
+    worksheet.conditional_format(f'B2:B{data_len}', {'type': '3_color_scale'})
+    worksheet.conditional_format(f'C2:B{data_len}', {'type': '3_color_scale'})
+
     worksheet.insert_chart('E2', chart)
     workbook.close()
     full_path_to_file = str(patch[0])

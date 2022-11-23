@@ -49,8 +49,6 @@ def export_frecventa_categoriilor(patch="data.xlsx"):
         })
 
         worksheet.insert_chart('D2', chart)
-        # worksheet.conditional_format(f'B2:B{data_len}', {'type': '3_color_scale'})
-        # worksheet.conditional_format(f'C2:C{data_len}', {'type': '3_color_scale'})
 
         workbook.close()
         full_path_to_file = str(patch[0])
