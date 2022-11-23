@@ -65,6 +65,10 @@ class Ui_MainWindow(object):
         self.subcategory_label_2.setStyleSheet("font: 14pt \"Nirmala UI Semilight\";")
         self.subcategory_label_2.setAlignment(QtCore.Qt.AlignCenter)
         self.subcategory_label_2.setObjectName("subcategory_label_2")
+        self.export_btn = QtWidgets.QPushButton(self.centralwidget)
+        self.export_btn.setGeometry(QtCore.QRect(795, 10, 191, 33))
+        self.export_btn.setStyleSheet("font: 14pt \"Nirmala UI Semilight\";")
+        self.export_btn.setObjectName("export_btn")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -77,6 +81,7 @@ class Ui_MainWindow(object):
         self.genereazaGraph_Button.setText(_translate("MainWindow", "Genereaza Graph"))
         self.title.setText(_translate("MainWindow", "CAIA"))
         self.subcategory_label_2.setText(_translate("MainWindow", "Evidentierea ponderii vanzarilor pe fiecare produs in parte, in total vanzari"))
+        self.export_btn.setText(_translate("MainWindow", "Export"))
 
 
 if __name__ == "__main__":

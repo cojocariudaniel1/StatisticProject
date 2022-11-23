@@ -99,6 +99,22 @@
      </item>
     </layout>
    </widget>
+   <widget class="QPushButton" name="export_btn">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>10</y>
+      <width>251</width>
+      <height>33</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Export</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>

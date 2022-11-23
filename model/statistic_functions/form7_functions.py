@@ -42,8 +42,14 @@ def export_to_excel(obj, patch='data.xlsx', trend_line_attrs=None):
             chart.add_series({
                 'values': f'=Sheet1!$B$2:$B${data_len}',
                 'categories': f'=Sheet1!$A$2:$A${data_len}',
-                'name': 'Profit/Time',
+                'name': 'Chart',
                 'trendline': chart_trendline(trend_line_attrs)
+            })
+        else:
+            chart.add_series({
+                'values': f'=Sheet1!$B$2:$B${data_len}',
+                'categories': f'=Sheet1!$A$2:$A${data_len}',
+                'name': 'Chart',
             })
 
         worksheet.insert_chart('E2', chart)

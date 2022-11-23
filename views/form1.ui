@@ -264,6 +264,37 @@
      <string>Export Chart Perioada de timp</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="export_btn">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>20</y>
+      <width>331</width>
+      <height>39</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+      <horstretch>47</horstretch>
+      <verstretch>50</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>9</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 14pt &quot;Nirmala UI Semilight&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Export</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>

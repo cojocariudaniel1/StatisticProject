@@ -1,26 +1,82 @@
+import logging
 import os
 
-import numpy as np
 import pandas as pd
-import statsmodels.api as sm
-import statsmodels.formula.api as smf
 import xlsxwriter
-
 
 # Construct the columns for the different powers of x
 from model.statistic_functions.form4_functions import chart_trendline
 
 
-def get_r2_statsmodels(x, y, k=1):
-    xpoly = np.column_stack([x ** i for i in range(k + 1)])
-    return sm.OLS(y, xpoly).fit().rsquared
+def export_zona_de_distributie(item, patch="data.xlsx"):
+    try:
+        df = zona_de_distributie(item)
+        dataframe = df[2][["State", "Profit"]]
+
+        header = dataframe.columns
+        workbook = xlsxwriter.Workbook(patch[0])
+        worksheet = workbook.add_worksheet()
+        worksheet.write_row('A1', header)
+        worksheet.write_column('A2', dataframe["State"])
+        worksheet.write_column('B2', dataframe["Profit"])
+
+        chart = workbook.add_chart({'type': 'column'})
+        data_len = len(dataframe["Profit"]) + 1
+        chart.add_series({
+            'name': '=Sheet1!$B$1',
+            'categories': f'=Sheet1!$A$2:$A${data_len}',
+            'values': f'=Sheet1!$B$2:$B${data_len}',
+        })
+
+        worksheet.insert_chart('D2', chart)
+        worksheet.conditional_format(f'B2:B{data_len}', {'type': '3_color_scale'})
+
+        workbook.close()
+        full_path_to_file = str(patch[0])
+        os.startfile(full_path_to_file)
+    except BaseException as e:
+        logging.exception(e)
 
 
-# Use the formula API and construct a formula describing the polynomial
-def get_r2_statsmodels_formula(x, y, k=1):
-    formula = 'y ~ 1 + ' + ' + '.join('I(x**{})'.format(i) for i in range(1, k + 1))
-    data = {'x': x, 'y': y}
-    return smf.ols(formula, data).fit().rsquared  # or rsquared_adj
+def exporta_profilui_clientilor(obj, patch="data.xlsx"):
+    try:
+        x, y = obj[0][0], obj[0][1]
+
+        list_of_tuples = list(zip(x, y))
+
+        # Assign data to tuples
+
+        # Converting lists of tuples into
+        # pandas Dataframe.
+        df = pd.DataFrame(list_of_tuples, columns=['Segment', 'Profit'])
+        data = df.groupby("Segment").sum().reset_index()
+        print(data)
+
+        workbook = xlsxwriter.Workbook(patch[0])
+        worksheet = workbook.add_worksheet()
+        header = ["Segment", "Profit"]
+        worksheet.write_row('A1', header)
+        worksheet.write_column('A2', df["Segment"])
+        worksheet.write_column('B2', df["Profit"])
+
+        data_len = len(data["Profit"]) + 1
+
+        print(data_len)
+
+        chart = workbook.add_chart({'type': 'column'})
+        chart.add_series({
+            'name': '=Sheet1!$B$1',
+            'categories': f'=Sheet1!$A$2:$A${data_len}',
+            'values': f'=Sheet1!$B$2:$B${data_len}',
+        })
+        worksheet.insert_chart('D2', chart)
+        worksheet.conditional_format(f'B2:B{data_len}', {'type': '3_color_scale'})
+
+        workbook.close()
+        full_path_to_file = str(patch[0])
+        os.startfile(full_path_to_file)
+    except BaseException as e:
+        logging.exception(e)
 
 
 def export_to_excel(obj, patch='data.xlsx', trend_line_attrs=None):
@@ -46,12 +102,17 @@ def export_to_excel(obj, patch='data.xlsx', trend_line_attrs=None):
 
         data_len = len(profit) + 1
         # Add a series to the chart.
-        chart.add_series({
-            'values': f'=Sheet1!$B$2:$B${data_len}',
-            'categories': f'=Sheet1!$A$2:$A${data_len}',
-            'name': 'Profit/Time',
-            'trendline': chart_trendline(trend_line_attrs)
-        })
+        if trend_line_attrs:
+            chart.add_series({
+                'values': f'=Sheet1!$B$2:$B${data_len}',
+                'categories': f'=Sheet1!$A$2:$A${data_len}',
+                'trendline': chart_trendline(trend_line_attrs)
+            })
+        else:
+            chart.add_series({
+                'values': f'=Sheet1!$B$2:$B${data_len}',
+                'categories': f'=Sheet1!$A$2:$A${data_len}',
+            })
         # Insert the chart into the worksheet.
         worksheet.insert_chart('D2', chart)
 
@@ -126,7 +187,7 @@ def test():
     df3 = dateframe["State"].drop_duplicates()
     df4 = dateframe["Region"].drop_duplicates()
 
-    region = dateframe[["Region","State"]].drop_duplicates()
+    region = dateframe[["Region", "State"]].drop_duplicates()
     region1 = region[region["Region"] == "South"]
     print(df4)
     print(region1)
@@ -146,7 +207,7 @@ def zona_de_distributie(product_name):
     df2 = df[df["Product Name"] == product_name].sort_values(by="State")
     region = df2["State"].tolist()  # Se atribui variabilei region toate statele
     profit = df2["Profit"].tolist()
-    obj = [region, profit]
+    obj = [region, profit, df2]
     return obj  # Se returneaza cele 2 liste (x, y)
 
 

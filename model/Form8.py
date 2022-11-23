@@ -5,11 +5,8 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
     NavigationToolbar2QT as NavigationToolbar
 from matplotlib.figure import Figure
 
-from model.statistic_functions.form3_functions import get_category
 from model.statistic_functions.form5_functions import get_subcategory
-from model.statistic_functions.form6_functions import top_5_produse_pe_subcategorie
-from model.statistic_functions.form7_functions import profit_pe_an
-from model.statistic_functions.form8_functions import pondere_vanzari
+from model.statistic_functions.form8_functions import pondere_vanzari, export_pondere_vanzari
 from views.form8_view import Ui_MainWindow
 
 rcParams.update({'figure.autolayout': True})
@@ -35,24 +32,29 @@ class Form8(QtWidgets.QMainWindow):
         self.ui.chart_layout.addWidget(self.toolbar)
         self.ui.genereazaGraph_Button.clicked.connect(self.generate_graph)
         self.populate_combobox()
+        self.ui.export_btn.clicked.connect(self.export)
 
     def populate_combobox(self):
         sub_category = get_subcategory()
         for k in sub_category:
             self.ui.subCategorieCB.addItem(str(k))
 
+    def export(self):
+        folderpath = QtWidgets.QFileDialog.getSaveFileName(self, 'Select Folder')
+        export_pondere_vanzari(self.ui.subCategorieCB.currentText(), folderpath)
+
     def generate_graph(self):
         obj = pondere_vanzari(self.ui.subCategorieCB.currentText())
         self.sc.axes.clear()
         x1 = obj[0]
         x2 = obj[1]
-        print(x1,x2)
+        print(x1, x2)
         print(type(x1))
         print(type(x2))
         labels = obj[2]
         explode = obj[3]
         self.sc.axes.pie([x1, x2], explode=explode, labels=labels, autopct='%1.1f%%',
-                shadow=True, startangle=90)
+                         shadow=True, startangle=90)
 
         # self.sc.axes.tick_params(axis="x", labelrotation=90)
         self.sc.draw()

@@ -12,13 +12,6 @@ def get_data():
     return dataframe
 
 
-# America - 40.195267148677914, -101.46781948956031
-# New York - East > 40.764530178295615, -74.01273310179133
-# Washington - West > 38.90988150540193, -77.04158535326653
-# Oklahoma - Central > 35.77361405029908, -97.81892722719641
-# Georgia - South > 32.69122224252546, -83.80584570572391
-
-
 central = [43.934461082838965, -96.22057172688287]
 west = [42.07819545813198, -115.88890149175025]
 south = [31.819477866201037, -99.097218661424]
@@ -30,14 +23,20 @@ def mean_sales():
 
     dataframe = df[["Sales", "Category"]]
 
+    # Face suma la vanzari (TOTAL)
     df2 = dataframe.sum(numeric_only=True)
     total = int(df2)
+
     df1 = dataframe.groupby("Category").sum(numeric_only=True).reset_index()
 
     list_df1 = []
+
+    # df1.iloc[i][0] = Titlu categorie , df1.iloc[i][1] - pondere
+    # len(df1) - nr de elemente din df1
+    # for i in range len(df1)- for i in 20
+
     for i in range(len(df1)):
         list_df1.append([df1.iloc[i][0], (df1.iloc[i][1] / total) * 100])
-
     return list_df1
 
 
@@ -111,7 +110,6 @@ def map_create():
         elif i == "East":
             marker(map, get_info(i), east)
 
-
     fol.Marker(
         central, popup="<i>Central</i>", tooltip="Central",
     ).add_to(map)
@@ -138,15 +136,15 @@ def marker(map, data, zone):
         value = f"{i[1]:.2f} %"
         string = f"{str(i[0]) + '   ' + str(value)}"
         list1.append(string)
-    print(list1)
     fol.Marker(
         [zone[0] + count, zone[1] + 1],
-        icon=fol.DivIcon(html=f"""<div style="font-family: Verdana, sans-serif; width: 300px; color: blue; font-weight:bold;font-size: 13px;   box-sizing: border-box;
-  width: 190px;
-  height: 65px;
-  border: 2px solid #969696;
-  background: #FFFFFF;
-  opacity: 0.7;
-  margin: 2px; ">{', '.join(list1)}</div>""")
-    ).add_to(map)
+        icon=fol.DivIcon(html=f"""<div style="font-family: Verdana, sans-serif; width: 300px; color: blue; 
+        font-weight:bold;font-size: 13px;
+        box-sizing: border-box;
+          width: 190px;
+          height: 65px;
+          border: 2px solid #969696;
+          background: #FFFFFF;
+          opacity: 0.7;
+          margin: 2px; ">{', '.join(list1)}</div>""")).add_to(map)
     count += 2

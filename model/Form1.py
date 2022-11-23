@@ -10,7 +10,7 @@ from matplotlib.figure import Figure
 
 from model.Export import Export
 from model.statistic_functions.form1_functions import get_products, perioada_de_timp, zona_de_distributie, \
-    export_to_excel
+    export_to_excel, exporta_profilui_clientilor, export_zona_de_distributie
 
 from model.statistic_functions.form1_functions import profilul_clientilor
 from views.form1_view import Ui_MainWindow
@@ -34,6 +34,7 @@ class Form1(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.export_button.hide()
+        self.ui.export_btn.hide()
         # Se creaza graficul gol
         self.sc = MplCanvas(self, width=5, height=4, dpi=100)
         # Se adauga meniul de la grafic in partea de jos
@@ -51,6 +52,7 @@ class Form1(QtWidgets.QMainWindow):
         self.ui.zonaDeDistributieRB.clicked.connect(self.reset_date)
 
         self.ui.export_button.clicked.connect(self.export)
+        self.ui.export_btn.clicked.connect(self.export2)
 
     def export(self):
         self.new_window = Export("Form1", self.ui.productComboBox.currentText())
@@ -70,6 +72,16 @@ class Form1(QtWidgets.QMainWindow):
         items = get_products()
         for j in items:
             self.ui.productComboBox.addItem(str(j))
+
+    def export2(self):
+        if self.ui.profilulClientilorRB.isChecked():
+            folderpath = QtWidgets.QFileDialog.getSaveFileName(self, 'Select Folder')
+            obj = profilul_clientilor(self.ui.productComboBox.currentText())
+            exporta_profilui_clientilor(obj, folderpath)
+        elif self.ui.zonaDeDistributieRB.isChecked():
+            folderpath = QtWidgets.QFileDialog.getSaveFileName(self, 'Select Folder')
+            export_zona_de_distributie(self.ui.productComboBox.currentText(), folderpath)
+
 
     def check_button(self):
         self.sc.axes.clear()
@@ -121,8 +133,16 @@ class Form1(QtWidgets.QMainWindow):
 
     def generate_graph(self, x, y, kind):
         if self.ui.perioadaDeTimpRB.isChecked():
+            self.ui.export_btn.hide()
             self.ui.export_button.show()
+
         else:
+            self.ui.export_button.hide()
+        if self.ui.profilulClientilorRB.isChecked():
+            self.ui.export_btn.show()
+            self.ui.export_button.hide()
+        if self.ui.zonaDeDistributieRB.isChecked():
+            self.ui.export_btn.show()
             self.ui.export_button.hide()
 
         if kind == "linear":

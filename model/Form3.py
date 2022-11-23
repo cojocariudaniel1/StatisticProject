@@ -8,7 +8,7 @@ from matplotlib.figure import Figure
 from PyQt5 import QtCore, QtWidgets
 
 from model.statistic_functions.form3_functions import get_sales, scoatere_produs, get_products, get_category, \
-    scoatere_categorie
+    scoatere_categorie, export_scoatere_categorie
 from views.form3_view import Ui_MainWindow
 from matplotlib import rcParams
 
@@ -40,7 +40,8 @@ class Form3(QtWidgets.QMainWindow):
         self.ui.sales_label_clpr.setText(f"Sales: 0")
         self.ui.sales.setText(str(get_sales()))
         self.populate_combobox()
-
+        self.last_button = None
+        self.ui.export_btn.clicked.connect(self.export)
 
     def populate_combobox(self):
         product_category = get_category()
@@ -51,6 +52,15 @@ class Form3(QtWidgets.QMainWindow):
         for j in prducts:
             self.ui.ProdusCB.addItem(str(j))
 
+    def export(self):
+        if self.last_button == 0:
+            folderpath = QtWidgets.QFileDialog.getSaveFileName(self, 'Select Folder')
+            export_scoatere_categorie(self.last_button, self.ui.clasaProdus_CB.currentText(), folderpath)
+            print(self.last_button)
+        else:
+            folderpath = QtWidgets.QFileDialog.getSaveFileName(self, 'Select Folder')
+            export_scoatere_categorie(self.last_button, self.ui.clasaProdus_CB.currentText(), folderpath)
+            print(self.last_button)
 
     def categorie_button(self):
         self.sc.axes.clear()
@@ -71,6 +81,7 @@ class Form3(QtWidgets.QMainWindow):
         self.sc.axes.bar(date,max)
         self.sc.draw()
         self.show()
+        self.last_button = 0
 
     def produs_button(self):
         self.sc.axes.clear()
@@ -90,3 +101,4 @@ class Form3(QtWidgets.QMainWindow):
         self.sc.axes.bar(date,max)
         self.sc.draw()
         self.show()
+        self.last_button = 1

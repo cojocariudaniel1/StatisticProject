@@ -117,6 +117,17 @@ class Ui_MainWindow(object):
         self.export_button.setMinimumSize(QtCore.QSize(0, 9))
         self.export_button.setStyleSheet("font: 14pt \"Nirmala UI Semilight\";")
         self.export_button.setObjectName("export_button")
+        self.export_btn = QtWidgets.QPushButton(self.centralwidget)
+        self.export_btn.setEnabled(True)
+        self.export_btn.setGeometry(QtCore.QRect(680, 20, 331, 39))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(47)
+        sizePolicy.setVerticalStretch(50)
+        sizePolicy.setHeightForWidth(self.export_btn.sizePolicy().hasHeightForWidth())
+        self.export_btn.setSizePolicy(sizePolicy)
+        self.export_btn.setMinimumSize(QtCore.QSize(0, 9))
+        self.export_btn.setStyleSheet("font: 14pt \"Nirmala UI Semilight\";")
+        self.export_btn.setObjectName("export_btn")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -136,6 +147,7 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "Min"))
         self.label_3.setText(_translate("MainWindow", "Max"))
         self.export_button.setText(_translate("MainWindow", "Export Chart Perioada de timp"))
+        self.export_btn.setText(_translate("MainWindow", "Export"))
 
 
 if __name__ == "__main__":

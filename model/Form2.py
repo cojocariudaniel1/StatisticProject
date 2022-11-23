@@ -6,7 +6,7 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 
 from model.statistic_functions.form2_functions import frecventa_categoriilor, distributia_sub_categoiilor, \
-    total_sales_by_subCategory
+    total_sales_by_subCategory, export_totalProfitGraph, export_distributia_categoriilor, export_frecventa_categoriilor
 from views.form2_view import Ui_MainWindow
 
 rcParams.update({'figure.autolayout': True})
@@ -33,6 +33,19 @@ class Form2(QtWidgets.QMainWindow):
         self.ui.chart_layout.addWidget(self.toolbar)
 
         self.ui.genereazaGraphButton.clicked.connect(self.check_radio_buttons)
+        self.ui.export_btn.clicked.connect(self.export)
+
+    def export(self):
+        if self.ui.totalulProfVanzPeSubCategorieRB.isChecked():
+            folderpath = QtWidgets.QFileDialog.getSaveFileName(self, 'Select Folder')
+            export_totalProfitGraph(folderpath)
+        if self.ui.distributiasubCategoriilorRB.isChecked():
+            folderpath = QtWidgets.QFileDialog.getSaveFileName(self, 'Select Folder')
+            export_distributia_categoriilor(folderpath)
+        if self.ui.frecventaCategoriilorRB.isChecked():
+            folderpath = QtWidgets.QFileDialog.getSaveFileName(self, 'Select Folder')
+            export_frecventa_categoriilor(folderpath)
+
 
     def check_radio_buttons(self):
         if self.ui.distributiasubCategoriilorRB.isChecked():

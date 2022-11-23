@@ -51,6 +51,10 @@ class Ui_MainWindow(object):
         self.genereazaGraphButton.setStyleSheet("font: 14pt \"Nirmala UI Semilight\";")
         self.genereazaGraphButton.setObjectName("genereazaGraphButton")
         self.parameters_grid.addWidget(self.genereazaGraphButton, 1, 1, 1, 1)
+        self.export_btn = QtWidgets.QPushButton(self.centralwidget)
+        self.export_btn.setGeometry(QtCore.QRect(720, 10, 251, 33))
+        self.export_btn.setStyleSheet("font: 14pt \"Nirmala UI Semilight\";")
+        self.export_btn.setObjectName("export_btn")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -64,6 +68,7 @@ class Ui_MainWindow(object):
         self.totalulProfVanzPeSubCategorieRB.setText(_translate("MainWindow", "Totalul profitului si a vanzarilor pe sub categorie"))
         self.distributiasubCategoriilorRB.setText(_translate("MainWindow", "Distributia sub categoriilor"))
         self.genereazaGraphButton.setText(_translate("MainWindow", "Genereaza Graph"))
+        self.export_btn.setText(_translate("MainWindow", "Export"))
 
 
 if __name__ == "__main__":

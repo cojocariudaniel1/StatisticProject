@@ -37,11 +37,16 @@ def export_to_excel(obj, patch='data.xlsx', trend_line_attrs=None):
             chart.add_series({
                 'values': f'=Sheet1!$B$2:$B${data_len}',
                 'categories': f'=Sheet1!$A$2:$A${data_len}',
-                'name': 'Profit/Time',
+                'name': 'Chart',
                 'trendline': chart_trendline(trend_line_attrs)
             })
+        else:
+            chart.add_series({
+                'values': f'=Sheet1!$B$2:$B${data_len}',
+                'categories': f'=Sheet1!$A$2:$A${data_len}',
+                'name': 'Chart',
+            })
         worksheet.insert_chart('E2', chart)
-        print(trend_line_attrs)
         worksheet.conditional_format(f'B2:B{data_len}', {'type': '3_color_scale'})
         workbook.close()
         full_path_to_file = str(patch[0])

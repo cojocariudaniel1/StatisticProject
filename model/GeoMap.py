@@ -27,15 +27,16 @@ class GeoMap(QtWidgets.QMainWindow):
         self.ui.chart_layout.addWidget(self.sc)
 
         try:
+            # Adaugare harta in interfata
             data = io.BytesIO()
-
             geo_map = map_create()
             geo_map.save(data, close_file=False)
-
             self.webview = QWebEngineView()
             self.webview.setHtml(data.getvalue().decode())
             self.ui.map_layout.addWidget(self.webview)
+
             self.gen_auto_graph()
+
             self.ui.checkBox.clicked.connect(self.check_button)
             self.ui.genereazaGraph_Button.clicked.connect(self.vizualizeaza)
 

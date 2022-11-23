@@ -16,13 +16,13 @@ def get_data():
 def export_to_excel(obj, patch='data.xlsx', trend_line_attrs=None):
     try:
 
-        # obj = [discount, sales, profit]
+        # obj = [discount, sales, profit] - fiecare element din obj este o lista
         discount = obj[0]
         sales = obj[1]
         profit = obj[2]
 
         header = ["discount", "sales", "profit"]
-        workbook = xlsxwriter.Workbook(patch[0])
+        workbook = xlsxwriter.Workbook(patch[0]) # Salveaza fisierul in locatia patch[0] , D:\Folder\excel.xlsx
 
         worksheet = workbook.add_worksheet()
 
@@ -35,9 +35,9 @@ def export_to_excel(obj, patch='data.xlsx', trend_line_attrs=None):
         # Create a new chart object.
         chart = workbook.add_chart({'type': 'line'})
 
-        data_len = len(profit) + 1
-        # Add a series to the chart.
+        data_len = len(profit) + 1 # variabila care contine lungimea la valori
 
+        # Add a series to the chart.
         chart.add_series({'values': f'=Sheet1!$C$2:$C${data_len}', 'categories': f'=Sheet1!$A$2:$A${data_len}'})
         chart.add_series({'values': f'=Sheet1!$A$2:$A${data_len}', 'categories': f'=Sheet1!$A$2:$A${data_len}'})
 
@@ -48,12 +48,19 @@ def export_to_excel(obj, patch='data.xlsx', trend_line_attrs=None):
                 'name': 'Profit/Time',
                 'trendline': chart_trendline(trend_line_attrs)
             })
+        else:
+            chart.add_series({
+                'values': f'=Sheet1!$B$2:$B${data_len}',
+                'categories': f'=Sheet1!$A$2:$A${data_len}',
+            })
         # Insert the chart into the worksheet.
         worksheet.insert_chart('E2', chart)
-        print(trend_line_attrs)
+
         worksheet.conditional_format(f'B2:B{data_len}', {'type': '3_color_scale'})
         worksheet.conditional_format(f'C2:C{data_len}', {'type': '3_color_scale'})
         workbook.close()
+
+        # Ca sa deschid excel-ul
         full_path_to_file = str(patch[0])
         os.startfile(full_path_to_file)
     except BaseException as e:
